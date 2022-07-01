@@ -7,7 +7,7 @@ import SimpleLightbox from "simplelightbox";
 // Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-console.log(galleryItems);
+// console.log(galleryItems);
 
 const paletteContainer = document.querySelector(".gallery");
 const cardsMarkup = createColorCardsMarkup(galleryItems);
@@ -33,6 +33,5 @@ function createColorCardsMarkup(galleryItems) {
 }
 
 
-var lightbox = new SimpleLightbox('.gallery a');
+const lightbox = new SimpleLightbox('.gallery a');
 
-  lightbox.show();
