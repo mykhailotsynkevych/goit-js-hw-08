@@ -13,7 +13,7 @@ const LOCALSTORAGE_KEY = 'feedback-form-state';
 
 isLocalStorageInfo();
 
-formData = {};
+const formData = {};
 
 function onTextareaInput(e) {
   const value = e.target.value;
