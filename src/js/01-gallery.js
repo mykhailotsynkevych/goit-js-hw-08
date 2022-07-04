@@ -33,5 +33,9 @@ function createColorCardsMarkup(galleryItems) {
 }
 
 
-const lightbox = new SimpleLightbox('.gallery a');
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+  captionPositiom: "bottom",
+  captionsData: "alt",
+});
 
