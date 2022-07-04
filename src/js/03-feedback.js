@@ -7,37 +7,43 @@ const refs = {
 };
 
 refs.form.addEventListener('submit', onFormSubmit);
-refs.form.addEventListener('input', throttle(onTextareaInput, 500));
+refs.input.addEventListener('input', throttle(onTextareaInput, 500));
+refs.textarea.addEventListener('input', throttle(onTextareaInput, 500));
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 
 isLocalStorageInfo();
 
-const formData = {};
-
 function onTextareaInput(e) {
-  const value = e.target.value;
-  formData[e.target.name] = value;
+  const formData = {
+    email: refs.input.value,
+    message: refs.textarea.value,
+  };
+  // const value = e.target.value;
+  // formData[e.target.name] = value;
 
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
 }
 
 function onFormSubmit(e) {
   e.preventDefault();
+  console.log({
+    email: refs.input.value,
+    message: refs.textarea.value,
+  });
 
-  localStorage.removeItem('feedback-form-state');
+  localStorage.removeItem(LOCALSTORAGE_KEY);
 
   refs.form.reset();
 
-  console.log(formData);
 }
 
-function isLocalStorageInfo(e) {
+function isLocalStorageInfo() {
   const savedInfo = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
 
   if (savedInfo) {
     refs.input.value = savedInfo.email;
     refs.textarea.value = savedInfo.message;
-    console.log(savedInfo);
+    // console.log(savedInfo);
   }
 }
